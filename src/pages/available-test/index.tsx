@@ -3,20 +3,22 @@ import { Box, Container, Typography } from '@mui/material'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React from 'react'
-import CardImg from '../../assets/cardImage.png'
 import CustomButton from '@/common-components/CustomButton'
 import PlayIcon from '../../assets/icons/playIcon.png'
+import { AllTestAvailable } from '@/constant/constant'
 
 const AvailableTest = () => {
     const router = useRouter()
     const { name } = router.query
+    const filterData = AllTestAvailable.filter((testData) => testData.title === name)
+
     return (
         <Layout title="Available Test | CozQuiz" footer>
             <Container className='main-container'>
                 <Box className="available-test-header-wrap">
-                    <Image src={CardImg.src} height={310} width={386} alt={"card"} />
+                    <Image src={filterData[0]?.img.src} height={310} width={386} alt={"card"} />
                     <Box>
-                        <Typography className='title'>{name}</Typography>
+                        <Typography className='title'>{filterData[0]?.title}</Typography>
                         <Typography className='content'>CogQuiz’s card sorting test like other sorting tests might be administered to individuals with brain injury (e.g., TBI, stroke, etc.), neurological/neurodegenerative disorders (e.g., Parkinson’s disease, Alzheimer’s disease, etc.), psychological/mental disorders (e.g., schizophrenia, depression, etc.), or to assess development in children and decline in elderly.</Typography>
                         <CustomButton btnText="Run Test" className="run-test-btn" endIcon={<Image src={PlayIcon.src} height={15} width={15} alt='play-button' />} />
                     </Box>

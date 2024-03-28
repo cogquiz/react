@@ -1,20 +1,33 @@
 .fixed-footer-wrap {
     // background-image: url(../assets/footer-image.png) !important;
+    position: relative;
+    padding-bottom: 40px;
+
+    .footer-container {
+        max-width: 1350px;
+        @media only screen and (min-width: 786px) and (max-width: 1200px) {
+            // max-width: 85%;
+            max-width: 97%;
+        }
+        @media only screen and (min-width: 1200px) {
+            max-width: 90%;
+        }
+    }
 
     .footer-insideWrap {
-        position: absolute;
         width: 100%;
     }
 
     .footer-image {
         position: absolute;
-        // bottom: 40px;
+        top: 0px;
+        left: 0px;
         z-index: -1;
+        width: 100%;
     }
 
     .footer-top {
         display: flex;
-        padding: 0 110px;
         gap: 100px;
         margin-top: 50px;
 
@@ -26,7 +39,6 @@
 
             .logo-text {
                 color: #605A5A;
-                // 
                 font-size: 14px;
                 font-style: normal;
                 font-weight: 400;
@@ -41,14 +53,13 @@
             align-items: flex-start;
             gap: 11px;
 
-            a{
+            a {
                 text-decoration: none;
             }
 
 
             .primary-text>span {
                 color: #2D4F44;
-                // 
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 600;
@@ -60,7 +71,6 @@
 
             span {
                 color: #2D4F44;
-                // 
                 font-size: 13px;
                 font-style: normal;
                 font-weight: 400;
@@ -75,12 +85,11 @@
 
     .footer-bottom {
         display: flex;
-        padding: 0 110px;
         margin-top: 30px 0;
         justify-content: space-between;
         align-items: flex-end;
 
-        .share-icons{
+        .share-icons {
             display: flex;
             gap: 10px;
             cursor: pointer;
@@ -88,7 +97,6 @@
 
         .follow-us-text {
             color: var(--Color-1, #69A6D1);
-            
             font-size: 18px;
             font-style: normal;
             font-weight: 700;
@@ -98,8 +106,6 @@
         .copyright-text {
             color: var(--Color-1, #69A6D1);
             text-align: right;
-            /* Body 1 mobile */
-            // font-family: Roboto;
             font-size: 16px;
             font-style: normal;
             font-weight: 400;

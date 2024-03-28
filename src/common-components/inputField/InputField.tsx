@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { ChangeEvent, FC } from 'react'
 import { Box, TextField } from '@mui/material'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -45,28 +45,22 @@ const InputFieldComponent: FC<InputProps> = ({
             {label ? (
                 <label className='input-label'>{label}</label>
             ) : null}
-            {
-                type === "date" ?
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DatePicker
-                            className='input-date-picker'/>
-                    </LocalizationProvider>
-                    : <TextField
-                        className='input-field-component'
-                        multiline={multiLine}
-                        rows={rows}
-                        variant='outlined'
-                        placeholder={placeHolder}
-                        margin='none'
-                        value={value}
-                        //   onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
-                        name={name}
-                        error={error}
-                        fullWidth
-                        onBlur={onBlur}
-                        {...props}
-                    />
-            }
+            <TextField
+                className='input-field-component'
+                multiline={multiLine}
+                rows={rows}
+                variant='outlined'
+                placeholder={placeHolder}
+                margin='none'
+                value={value}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e)}
+                name={name}
+                error={error}
+                fullWidth
+                onBlur={onBlur}
+                {...props}
+            />
+
         </Box>
     )
 }

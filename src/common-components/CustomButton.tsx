@@ -1,12 +1,14 @@
-import { Button, } from "@mui/material"
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const CustomButton = (props: any) => {
-    const { className, onBtnClick = () => { }, btnText, endIcon, startIcon } = props
+    const { className, onBtnClick = () => { }, btnText, endIcon, startIcon, disabled, loadingPosition } = props
 
     return (
-        <Button className={className} onClick={() => onBtnClick()} variant="contained" endIcon={endIcon} startIcon={startIcon}>
+        <LoadingButton className={className} onClick={(e) => onBtnClick(e)} variant="contained" endIcon={endIcon} startIcon={startIcon}
+            loadingPosition={loadingPosition}
+            loading={disabled}>
             {btnText}
-        </Button>
+        </LoadingButton>
     )
 }
 

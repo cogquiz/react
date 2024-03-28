@@ -8,7 +8,6 @@ import AnimationSlider from '../../assets/slider-1.json'
 import { constantData } from "@/constant/constant";
 import Image from "next/image";
 import EllipseBall from '../../assets/Ellipse-ball.png'
-import BackgroundWave from "@/components/backgroundWave";
 
 
 const UnlockMind = () => {
@@ -17,7 +16,6 @@ const UnlockMind = () => {
         <Box className="unlock-mind" pt={3}>
             <Container className="main-container">
                 <Box className="unlock-wrap">
-                      {/* <BackgroundWave margintop={25} /> */}
                     <Box className="left-container">
                         <Box>
                             <Typography className="unlock-title" variant="h3">

@@ -1,26 +1,38 @@
-import { useState } from "react";
 import Image from "next/image";
 import { Box, FormControl, TextField, Typography, } from "@mui/material";
 import ContactUsImg from '../../assets/contact.png'
 import SendIcon from '../../assets/right-arrow.png'
 import CustomButton from "@/common-components/CustomButton";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
-const initialFormData = {
-    name: "",
-    email: "",
-    message: ""
-}
+
 
 const ContactUs = () => {
-    const [formData, setFormData] = useState(initialFormData)
+    const ContactUsValidationSchema = Yup.object({
+        name: Yup.string().required("Name is required"),
+        email: Yup.string().required("Email is required"),
+        message: Yup.string().required("Message> is required"),
+    });
 
-    const handleMessageForm = (e: any) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
-    }
-
-    const handleSubmit = () => {
-    }
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            email: "",
+            message: ""
+        } as unknown as ContactUsDetails,
+        validateOnChange: true,
+        validationSchema: ContactUsValidationSchema,
+        enableReinitialize: true,
+        // regular contact us
+        onSubmit: async (values: ContactUsDetails) => {
+            const contactUsValue: ContactUsDetails = {
+                name: values.name,
+                email: values.email,
+                message: values.message,
+            };
+        },
+    });
 
     return (
         <Box id="connect" className="contact-wrap"  >
@@ -29,10 +41,22 @@ const ContactUs = () => {
                 <Typography variant="h4" className="any-query">Any Query?</Typography>
                 <Typography variant="h4" className="write-message">Write Message</Typography>
                 <FormControl className="contact-us-form">
-                    <TextField label="Enter Your Name" name="name" variant="outlined" onChange={(e) => handleMessageForm(e)} />
-                    <TextField label="Enter Your Email" name="email" variant="outlined" onChange={(e) => handleMessageForm(e)} />
-                    <TextField multiline rows={4} name="message" label="Enter Your Message" onChange={(e) => handleMessageForm(e)} />
-                    <CustomButton className={"send-btn"} onBtnClick={handleSubmit} btnText={"Submit Message"} endIcon={<Image height={17} width={17} src={SendIcon.src} alt={"send-icon"} />} />
+                    <TextField label="Enter Your Name"
+                        {...formik.getFieldProps("name")}
+                        name="name" variant="outlined"
+                        error={formik.touched.name && Boolean(formik.errors.name)}
+                    />
+                    <TextField label="Enter Your Email"
+                        {...formik.getFieldProps("email")}
+                        name="email" variant="outlined"
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                    />
+                    <TextField multiline rows={4}
+                        {...formik.getFieldProps("message")}
+                        name="message" label="Enter Your Message"
+                        error={formik.touched.message && Boolean(formik.errors.message)}
+                    />
+                    <CustomButton className={"send-btn"}  onBtnClick={formik.handleSubmit} btnText={"Submit Message"} endIcon={<Image height={17} width={17} src={SendIcon.src} alt={"send-icon"} />} />
                 </FormControl>
             </Box>
         </Box>

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  distDir:"dist"
+  reactStrictMode: false,
+  distDir: "dist",
 };
 
-export default nextConfig; 
+export default nextConfig;

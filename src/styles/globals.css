@@ -24,38 +24,46 @@
   }
 }
 
-.main-container{
+.main-container {
   margin-top: 150px;
   max-width: 1350px;
+
+  @media only screen and (min-width: 786px) and (max-width: 1200px) {
+    /* max-width: 85%; */
+  }
+
+  @media only screen and (min-width: 1200px) {
+    max-width: 90%;
+  }
 }
 
-.unlock-mind{
-  .main-container{
+.unlock-mind {
+  .main-container {
     margin-top: 150px;
     max-width: 1050px;
   }
 }
 
-.css-11xur9t-MuiPaper-root-MuiTableContainer-root{
-  box-shadow: 0px 0px 1px -1px rgba(0,0,0,0.2), 0px 0px 1px 0px rgba(0,0,0,0.14), 0px 0px 3px 0px rgba(0,0,0,0.12)
+.cus-table-wrap .MuiTableContainer-root {
+  box-shadow: 0px 0px 1px -1px rgba(0, 0, 0, 0.2), 0px 0px 1px 0px rgba(0, 0, 0, 0.14), 0px 0px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
-.background-wave{
+.background-wave {
   position: absolute;
   z-index: -1;
   left: 0;
   right: 0;
-  
+
 }
 
-.background-ellipse{
+.background-ellipse {
   position: absolute;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.ellipse-ball{
+.ellipse-ball {
   position: absolute;
   bottom: 115px;
   right: 175px;

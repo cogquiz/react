@@ -1,184 +1,235 @@
 .profile-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 50px;
 }
 
 .nav-menu {
-    border: 1px solid #DCDCDC;
-    border-radius: 5px;
-    height: auto;
-    width: 220px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  height: auto;
+  width: 220px;
 
-    .nav-item {
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        border-bottom: 1px solid #DCDCDC;
-    }
+  .nav-item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #dcdcdc;
+  }
 
-    .nav-item:last-child {
-        border-bottom: transparent;
-    }
+  .nav-item:last-child {
+    border-bottom: transparent;
+  }
 }
 
-
 .profile-outer-main-box-wrap {
-    border: 1px solid #DCDCDC;
-    border-radius: 5px;
-    min-height: 300px;
-    min-width: 650px;
-    max-width: 650px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  min-height: 300px;
+  min-width: 650px;
+  max-width: 650px;
 
-    .profile-details {
-        padding: 20px;
+  .profile-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .main-title {
+      color: #2d4f44;
+      text-align: center;
+      font-size: 42px;
+    }
+
+    .profile-section {
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+
+      .profile-image-section {
+        .title {
+          font-weight: 600;
+        }
+
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        justify-content: center;
+        gap: 10px;
 
+        .profile-update {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
 
-        .profile-section {
-            max-width: 400px;
-            display: flex;
-            justify-content: space-between;
+          img {
+            cursor: pointer;
+          }
 
-            .profile-image-section {
-                .title {
-                    font-weight: 600;
-                }
+          .profile-image {
+            width: 70px;
+            height: 70px;
+          }
+        }
+      }
 
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                gap: 10px;
+      .profile-details-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
 
-                .profile-update {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 20px;
-
-                    img {
-                        cursor: pointer;
-                    }
-
-                    .profile-image {
-                        width: 70px;
-                        height: 70px;
-                    }
-                }
-            }
-
-            .profile-details-section {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-                flex-direction: column;
-
-                .title {
-                    font-weight: 600;
-                }
-
-                .details-value {
-                    font-weight: 100;
-                }
-            }
+        .title {
+          font-weight: 600;
         }
 
-        .upload-result {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            .title {
-                font-weight: 600;
-            }
-
-            .MuiDropzoneArea-root {
-                opacity: 0.5;
-            }
-
-            .button-class {
-                display: flex;
-                gap: 10px;
-
-                .upload-button {
-                    border-radius: 6px;
-                    background-color: #FFD4B1;
-                    color: black;
-                }
-            }
-
+        .details-value {
+          font-weight: 100;
         }
-
-        .provider-code-wrap {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            .title {
-                font-weight: 600;
-            }
-
-            .provider-code {
-                border: 1px solid #B3BABD;
-                border-radius: 6px;
-                width: fit-content;
-                padding: 5px 10px;
-                width: fit-content;
-            }
-        }
-
-
+      }
     }
 
-    .profile-form-layout {
-        padding: 20px;
+    .upload-result {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
 
-        .checkbox-label{
-            font-size: 14px;
-            color: #676363;
-            font-weight: 600;
+      .title {
+        font-weight: 600;
+      }
 
+      .MuiDropzoneArea-root {
+        opacity: 0.5;
+      }
+
+      .button-class {
+        display: flex;
+        gap: 10px;
+
+        .upload-button {
+          border-radius: 6px;
+          background-color: #ffd4b1;
+          color: black;
         }
-
-        .form-title{
-            font-size: 25px;
-        }
-
-        .profile-label {
-            color: #3D3D3D;
-            font-size: 14px;
-            font-weight: 600;
-        }
+      }
     }
 
+    .provider-code-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .title {
+        font-weight: 600;
+      }
+
+      .provider-code {
+        border: 1px solid #b3babd;
+        border-radius: 6px;
+        width: fit-content;
+        padding: 5px 10px;
+        width: fit-content;
+      }
+    }
+
+    .profile-available-container {
+      display: grid;
+      grid-template-columns: 250px 250px;
+      grid-column-gap: 25px;
+      grid-row-gap: 25px;
+      justify-content: center;
+
+      .profile-available-title {
+        color: #2d4f44;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        margin-top: 17px;
+        display: flex;
+        cursor: pointer;
+      }
+    }
+
+    .norms-tables {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 20px;
+
+      .norms-tables-btn {
+        flex-basis: calc(50% - 10px);
+        margin-bottom: 10px;
+      }
+
+      .instructional-videos {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+    }
+  }
+
+  .profile-form-layout {
+    padding: 20px;
+
+    .checkbox-label {
+      font-size: 14px;
+      color: #676363;
+      font-weight: 600;
+    }
+
+    .form-title {
+      font-size: 25px;
+    }
+
+    .profile-label {
+      color: #3d3d3d;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
 }
 
 .save-profile {
-    background: #69A6D1;
+  background: #69a6d1;
 }
 
 .profile-outer-main-box-wrap.your-test-out-wrap,
 .profile-outer-main-box-wrap.profile-form-out-wrap {
-    min-width: 90%;
-    max-width: 90%;
-
+  min-width: 90%;
+  max-width: 90%;
 }
 
-.export-btn-wrap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
+.export-btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 
-    .export-btn{
-        background-color: #69A6D1;
-        height: 37px;
-    }
+  .export-btn {
+    background-color: #69a6d1;
+    height: 37px;
+  }
+}
+
+.testcategory-image {
+  cursor: pointer;
+  width: 130px;
+  height: 130px;
+}
+
+.testcategory-title {
+  cursor: pointer;
 }

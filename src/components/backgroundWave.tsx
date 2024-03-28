@@ -10,8 +10,8 @@ const BackgroundWave = (props:any) => {
     return (
         <Box mt={margintop} className='background-wave'>
             <Box className="background-ellipse">
-                <Image height={274} width={293} src={EllipseLeft.src} alt="ellipse-left" />
-                <Image height={280} width={299} src={EllipseRight.src} alt="ellipse-right" />
+                <Image height={234} width={253} src={EllipseLeft.src} alt="ellipse-left" />
+                <Image height={240} width={259} src={EllipseRight.src} alt="ellipse-right" />
             </Box>
             <Image height={100} width={100} layout='responsive' src={WaveImg.src} alt="wave" />
         </Box>
