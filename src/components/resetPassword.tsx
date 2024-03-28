@@ -43,7 +43,6 @@ const ResetPassword = () => {
     validationSchema: ResetPasswordValidationSchema,
     enableReinitialize: true,
     onSubmit: async (values: ResetPasswordDetails) => {
-      console.log(values)
       setIsLoading(true)
       let finalRes = {
         userId: userId,

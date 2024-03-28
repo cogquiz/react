@@ -9,7 +9,7 @@ import * as Yup from "yup";
 import DatePickerComponent from '@/common-components/datePicker/datePickerComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '@/redux/app/store';
-import { fetchAllOptionThunk, fetchUserProfileThunk, updateUserProfileThunk } from '@/redux/feature/user-profile/userProfileThunk';
+import { fetchAllOptionThunk, fetchUserProfileThunk, fetchUserThunk, updateUserProfileThunk } from '@/redux/feature/user-profile/userProfileThunk';
 import dayjs from 'dayjs';
 import toast from 'react-hot-toast';
 const intitalData = {
@@ -31,7 +31,7 @@ const intitalData = {
 const ProfileForm = () => {
   const dispatch = useDispatch<AppDispatch>()
   const [userDetail, setUserDetail] = useState<any>(intitalData)
-  const userId = localStorage.getItem("userId")
+  const userId: any = localStorage.getItem("userId")
   const userProfileDetails = useSelector(
     (state: RootState) => state?.userProfile?.userProfileDetails
   );
@@ -56,8 +56,6 @@ const ProfileForm = () => {
     // eslint-disable-next-line
   }, [])
 
-  console.log('userProfileDetails?.birth_date', userProfileDetails?.birth_date, userProfileDetails?.last_name)
-
 
   useEffect(() => {
     setUserDetail({
@@ -65,7 +63,7 @@ const ProfileForm = () => {
       lastName: userProfileDetails?.last_name,
       DOB: userProfileDetails?.birth_date,
       education: userProfileDetails?.education,
-      checkForm: "",
+      checkForm: userProfileDetails?.checkForm,
       firtsLangEng: userProfileDetails?.isEnglishLanguage,
       gender: userProfileDetails?.gender,
       anyMedication: userProfileDetails?.medication,
@@ -104,11 +102,11 @@ const ProfileForm = () => {
       dispatch(updateUserProfileThunk(profileFormValue)).then((response: any) => {
         if (response?.payload) {
           toast.success(response.payload.data.message)
+          dispatch(fetchUserThunk(userId))
         }
       });
     }
   });
-
 
   const handleIncomeChange = (e: any, type: string) => {
     switch (type) {
@@ -146,7 +144,7 @@ const ProfileForm = () => {
         <Typography variant='body1' fontSize={12} mt={1.5}>To utilize the assessments on this site you need to read and agree to the conditions for taking any of the assessments provided by CogQuiz.com. The tests on this site are considered and provided solely as experimental assessments. They are not clinically or medically diagnostic or for use in treating or preventing clinical of medical conditions. If you have questions or concerns about the results or our reporting of your results on any assessment taken on this site, you may want to print your results and discuss them with a licensed medical of psychological professional. CogQuiz.com, CogQuiz, LLC, or the owners of this company and/or website are not responsible for any errors or misinterpretation of the results by users of this website and assessments. By checking accept below you are acknowledging that you have read and understood the conditions for taking any assessment provided on this website.</Typography>
 
         <FormControlLabel
-          control={<Checkbox {...formik.getFieldProps("checkForm")} size="small" name='checkForm' />}
+          control={<Checkbox {...formik.getFieldProps("checkForm")} checked={Boolean(formik?.values?.checkForm)} size="small" name='checkForm' />}
           label={<Typography className='checkbox-label' >I have read and understood</Typography>}
         />
         {formik.touched.checkForm && formik.errors.checkForm && (

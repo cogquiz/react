@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import CustomButton from '@/common-components/CustomButton'
 import { Avatar, Box, Button, Typography } from '@mui/material'
 import { DropzoneArea } from 'material-ui-dropzone'
@@ -11,10 +11,22 @@ import { RootState } from '@/redux/app/store'
 const UserProfile = (props: any) => {
   const [profileImg, setProfileImg] = useState(null)
   const fileInputRef = useRef(null)
+  const [userAge, setUserAge] = useState(0)
 
   const userDetails = useSelector(
     (state: RootState) => state?.userProfile?.userDetails
   );
+  
+  useEffect(() => {
+    let birthDate = userDetails?.birth_date
+    let birth = new Date(birthDate);
+    let current = new Date();
+    let age = current.getFullYear() - birth.getFullYear();
+    if (current.getMonth() < birth.getMonth() || (current.getMonth() === birth.getMonth() && current.getDate() < birth.getDate())) {
+      age--;
+    }
+    setUserAge(age);
+  }, [userDetails])
 
   return (
     <Box className="profile-outer-main-box-wrap">
@@ -31,7 +43,7 @@ const UserProfile = (props: any) => {
           <Box className="profile-details-section">
             <Typography className='title' >User name: <span className='details-value'>{userDetails?.name}</span></Typography>
             <Typography className='title'>Email: <span className='details-value'>{userDetails?.email}</span></Typography>
-            <Typography className='title' >Age: <span className='details-value'>{ }</span></Typography>
+            <Typography className='title' >Age: <span className='details-value'>{userAge}</span></Typography>
           </Box>
         </Box>
         <Box className="upload-result">

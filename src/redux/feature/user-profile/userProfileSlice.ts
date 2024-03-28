@@ -87,9 +87,9 @@ const userProfileSlice = createSlice({
         });
         builder.addCase(
             updateUserProfileThunk.fulfilled,
-            (state: UserProfileState, action: PayloadAction<any>) => {
+            (state: UserProfileState, action: any) => {
                 state.status = "succeeded";
-                state.userDetails = action.payload;
+                state.userProfileDetails = action?.meta.arg;
             }
         );
         builder.addCase(

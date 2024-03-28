@@ -42,7 +42,7 @@ const TestCategories = () => {
                     {
                         TestCategorysForHome.map((data: { image: any, title: string, id: number }) => {
                             return (
-                                <Container className="single-container">
+                                <Container className="single-container" key={data.id}>
                                     <Image height={128} width={128} src={data.image} alt="brain-ai" />
                                     <Typography className="container-title" variant="h5">{data.title}</Typography>
                                     <CustomButton onBtnClick={() => handleReadMore(data.title)} className="test-cat-btn" btnText={"Read More"} endIcon={<Image height={17} width={17} src={SendIcon.src} alt="send" />} />
@@ -50,21 +50,6 @@ const TestCategories = () => {
                             )
                         })
                     }
-                    {/* <Container className="single-container">
-                        <Image height={128} width={128} src={BrainAi.src} alt="brain-ai" />
-                        <Typography className="container-title" variant="h5">Memory With AI</Typography>
-                        <CustomButton onBtnClick={() => handleReadMore("Memory With AI")} className="test-cat-btn" btnText={"Read More"} endIcon={<Image height={17} width={17} src={SendIcon.src} alt="send" />} />
-                    </Container>
-                    <Container className="single-container">
-                        <Image height={128} width={128} src={Planning.src} alt="brain-ai" />
-                        <Typography className="container-title" variant="h5">Executive function and Planning</Typography>
-                        <CustomButton onBtnClick={() => handleReadMore("Executive function and Planning")} className="test-cat-btn" btnText={"Read More"} endIcon={<Image height={17} width={17} src={SendIcon.src} alt="send" />} />
-                    </Container>
-                    <Container className="single-container">
-                        <Image height={128} width={128} src={SpeedProcessing.src} alt="brain-ai" />
-                        <Typography className="container-title" variant="h5">Processing Speed</Typography>
-                        <CustomButton onBtnClick={() => handleReadMore("Processing Speed")} className="test-cat-btn" btnText={"Read More"} endIcon={<Image height={17} width={17} src={SendIcon.src} alt="send" />} />
-                    </Container> */}
                 </Box>
             </Box>
 

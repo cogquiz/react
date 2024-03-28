@@ -37,7 +37,6 @@ const AddNewParticipant = () => {
     password: Yup.string().required("Password is required"),
   })
 
-  console.log('isLoading', isLoading)
 
   const formikParticipant = useFormik({
     initialValues: {
